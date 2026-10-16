@@ -1,0 +1,11 @@
+# Named connections to external platforms. One connection can be shared by many agents.
+# NO secrets here: keys ending in `_env` name environment variables, which GitHub Actions fills
+# from repository secrets (Settings > Secrets and variables > Actions).
+#
+# To add a platform: write a connector in core/connectors/, register it with a type name, then add
+# an entry here. Agents refer to connections by name only.
+connections:
+  tracker_sheet:
+    type: gsheets
+    spreadsheet_id_env: TRACKER_SHEET_ID   # secret: the id from the spreadsheet URL
+    credentials_env: GOOGLE_SA_JSON        # secret: full contents of the service-account key JSON

@@ -1,0 +1,15 @@
+name: workout_comments
+type: incremental_extraction
+enabled: true
+connection: tracker_sheet
+# schedule: "0 12 * * 1"   # omit to inherit the weekly default from defaults.yaml
+
+params:
+  table: Enriched_Data          #  the tab (worksheet) name that holds the sets table
+  comment_column: Comment       # workout-level free text
+  workout_key: [Date, Gym_Day]  # rows sharing these values are ONE workout (comment processed once)
+  context_fields: [Gym_Day]     # extra columns shown to the model as context (first row of workout)
+  batch_size: 8                 # workouts per LLM call
+  max_calls_per_run: 40         # safety cap; a big backfill simply continues on the next run
+  create_missing_columns: true  # add headers for columns listed in columns.yaml if absent
+  bool_format: int              # flags written as 1/0 ("int") or TRUE/FALSE ("bool")

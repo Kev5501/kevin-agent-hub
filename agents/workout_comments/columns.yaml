@@ -1,0 +1,66 @@
+# Columns this agent fills from the workout Comment. The `name` must match the sheet header.
+#
+# HOW TO ADD A COLUMN LATER: append an entry here, commit, and run the agent (or wait for its
+# schedule). It is created in the sheet if missing and backfilled for ALL history using only
+# that one column in the prompt. (If you already added the header in the sheet, it just fills it.)
+#
+# type: bool | int | float | enum.  range: [low, high] for int/float.  values: [..] for enum.
+# missing: what to write when the comment doesn't mention the field (so the cell stops being
+#          "pending"). Default: 0 for bool, "NA" for everything else.
+#
+# If your sheet already has parsed columns, rename the entries below to match your existing
+# headers and value conventions so the agent adopts them instead of creating duplicates.
+columns:
+  - name: workout_rating
+    type: int
+    range: [1, 5]
+    description: >-
+      Overall rating of the workout based on the lifters comment. Should be rated from 1-5 as follows:
+      1 = very bad workout (can include: mentions of very bad strength/feel/mood/pump, injury, extreme fatigue, extreme sickness),
+      2 = bad workout (can include: mentions of below average strength/feel/mood/pump, slight fatigue, mild sickness impacting performance),
+      3 = okay workout (can include: mentions of average strength strength/feel/mood/pump, "mid" used as a description, or mixed feelings can result in this rating),
+      4 = good workout (can include: mentions of a abouve average strength/feel/mood/pump, "W" used as description, energetic tone),
+      5 = very good workout (can include: mentions of very good strength/feel/mood/pump, extremley energetic and excited tone, use of "insane" to describe workout)
+      
+  - name: pump_rating
+    type: int
+    range: [1, 3]
+    description: >-
+      How good the lifters pump was during thier workout. Should be rated from 1-3 as follows:
+      1 = Below average pump (lifter did not get a good pump),
+      2 = Average pump (lifter may not have mentioned good of bad pump or stated pump was only "okay" or "decent"),
+      3 = Abouve average pump (lifter expressed pump was clearly good perhaps using words such as "crazy" or "insane")
+
+  - name: injury_ind
+    type: bool
+    description: If the lifter had pain, a tweak, an injury or joint/muscle discomfort beyond normal training soreness (1) or did not(0).
+
+  - name: illness_ind
+    type: bool
+    description: If the lifter mentions he had some sort of illness (1) or did not(0).
+
+  - name: girlfriend_ind
+    type: bool
+    description: If the lifter mentions his girlfriend was present (1) or not(0).
+
+  - name: fatigue_ind
+    type: bool
+    description: If the lifter mentions the he felt tired, fatigued, not recovrered, or had a lack of sleep (1) or not(0).
+
+  - name: vacation_ind
+    type: bool
+    description: If the lifter mentions he was on some sort of vacation (1) or not(0).
+
+  - name: form_change_ind
+    type: bool
+    description: If the lifter mentions any sort of change in form, technique, or execution of exersizes (1) or not(0).
+
+  - name: forgot_headphones_ind
+    type: bool
+    description: If the lifter mentions he forgot or did not have headphones (1) or not(0).
+
+  - name: other_extenuating_circumstances_ind
+    type: bool
+    description: >- 
+      If lifter mentions any sort of extenuating circumstances about workout that are unrelated to injury, illness, fatigue, vacation, form change, or forgetting headphones
+      (ex.workout was rushed or at a very late time) (1) or not(0).

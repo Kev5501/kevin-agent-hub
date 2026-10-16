@@ -1,0 +1,14 @@
+# TEMPLATE - copy this folder to agents/<your_agent_name>/ (folders starting with "_" are ignored).
+name: my_new_agent
+type: incremental_extraction     # or a new agent type you add under core/agents/
+enabled: true
+connection: tracker_sheet        # a name from connections.yaml (reuse existing connections!)
+schedule: "0 12 * * 1"           # optional; omit to inherit the default from defaults.yaml
+
+params:
+  table: Sheet1
+  comment_column: Comment
+  workout_key: [Date]
+  context_fields: []
+  batch_size: 8
+  max_calls_per_run: 40

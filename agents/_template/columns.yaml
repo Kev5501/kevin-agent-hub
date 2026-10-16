@@ -1,0 +1,8 @@
+columns:
+  - name: example_flag
+    type: bool
+    description: Describe, in plain English, exactly when this should be true.
+  - name: example_score
+    type: int
+    range: [1, 10]
+    description: Describe what 1 and 10 mean.
