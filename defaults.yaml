@@ -1,18 +1,16 @@
 # Repo-wide defaults. Agents inherit these unless they override them in their own agent.yaml.
 
 # Default schedule for every agent: weekly, Mondays 12:00 (cron: minute hour day month weekday).
-# The dispatcher workflow runs daily at 13:23 UTC, so an agent runs on the first dispatcher run
-# AFTER its scheduled time. Keep agent times at or before 13:23 UTC (in `timezone` below) for
+# The dispatcher workflow runs daily, so an agent runs on the first dispatcher run
+# AFTER its scheduled time. Keep agent times at or before given time (in `timezone` below) for
 # same-day runs.
-schedule: "0 12 * * 1"
-timezone: UTC
+schedule: "23 20 * * 1"
+timezone: America/Toronto
 
 # Must match how often the dispatcher workflow fires (see .github/workflows/run-agents.yml).
 dispatcher_interval_hours: 24
 
-# LLM used by LLM-based agents. Change `model` if Google retires/renames models; check the
-# current free-tier model ids in Google AI Studio. min_interval_seconds spaces out calls to stay
-# under free-tier requests-per-minute limits (e.g. 12s ~ 5 requests/min).
+# LLM used by LLM-based agents
 llm:
   provider: gemini
   model: gemini-3.5-flash-lite
