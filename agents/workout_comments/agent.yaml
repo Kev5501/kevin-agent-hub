@@ -10,6 +10,6 @@ params:
   workout_key: [Date, Gym_Day]  # rows sharing these values are ONE workout (comment processed once)
   context_fields: [Gym_Day]     # extra columns shown to the model as context (first row of workout)
   batch_size: 8                 # workouts per LLM call
-  max_calls_per_run: 10         # safety cap; a big backfill simply continues on the next run
+  max_calls_per_run: 40         # safety cap; a big backfill simply continues on the next run
   create_missing_columns: true  # add headers for columns listed in columns.yaml if absent
   bool_format: int              # flags written as 1/0 ("int") or TRUE/FALSE ("bool")
