@@ -91,7 +91,7 @@ flowchart TD
 
 </details>
 
-## Repository layout
+## Repository Layout
 
 ```
 core/
@@ -109,6 +109,6 @@ tests/             unit and end-to-end tests
 .github/workflows/ run-agents.yml, keepalive.yml, ci.yml
 ```
 
-## Tech stack
+## Tech Stack
 
 Python 3.12 · GitHub Actions · Google Sheets API (gspread) · Gemini API · PyYAML · croniter · pytest · ruff
